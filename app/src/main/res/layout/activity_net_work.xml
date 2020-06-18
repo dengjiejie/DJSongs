@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <Button
+        android:id="@+id/action1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="同步"
+        />
+
+    <Button
+        android:id="@+id/action2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RXJAVA"
+        />
+
+    <Button
+        android:id="@+id/action3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="restiful"
+        />
+
+    <TextView
+        android:id="@+id/showText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

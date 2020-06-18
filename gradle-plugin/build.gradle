@@ -1,0 +1,55 @@
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('file://'+rootDir.absolutePath + '/local-maven/'))
+            pom.version = '0.0.4'
+            pom.artifactId = 'gradle_plugin'
+            pom.groupId='com.dj.songs.gradle_plugin'
+
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://depot.sankuai.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://maven.google.com' }
+
+        jcenter()
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://mvn.dianpingoa.com/android-nova"
+    }
+    maven {
+        url 'http://depot.sankuai.com/nexus/content/groups/public/'
+    }
+    maven { url 'https://maven.google.com' }
+}
+
+
+
+
+dependencies {
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+
+    implementation localGroovy()
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.android.tools.build:gradle:3.6.1'
+
+}

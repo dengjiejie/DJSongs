@@ -1,0 +1,48 @@
+package com.dj.songs.viewmodel.ui
+
+import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import com.dj.songs.R
+import com.dj.songs.viewmodel.vm.UserModel
+
+/**
+ *
+ * @author dengjie09
+ * @description:
+ * @date：2020/4/15 8:48 PM
+ *
+ */
+class ViewModelActivity : FragmentActivity() {
+
+
+    var button : Button? = null
+
+    var textView: TextView? = null
+    var viewModel: UserModel? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_view_model)
+
+        textView = findViewById(R.id.textView)
+        button = findViewById(R.id.button)
+        viewModel = ViewModelProviders.of(this).get(UserModel::class.java)
+        viewModel?.mUserLiveData?.observe(this,  Observer<String>(){
+            textView?.text = it
+        })
+        button?.setOnClickListener { viewModel?.doSomething() }
+        val fragmentManager =  supportFragmentManager.beginTransaction()
+
+        fragmentManager.add(R.id.fragment1, FragmentA(this))
+            .add(R.id.fragment2, FragmentB(this))
+            .commit()
+    }
+}

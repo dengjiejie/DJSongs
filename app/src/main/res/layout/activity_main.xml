@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <Button
+        android:id="@+id/action_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ImageLoader"
+        />
+
+    <Button
+        android:id="@+id/action_music"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MusicService"
+        />
+
+    <Button
+        android:id="@+id/action_network"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NetWorkService"
+        />
+
+    <Button
+        android:id="@+id/action_rxjava"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RxJavaService"
+        />
+
+    <Button
+        android:id="@+id/action_break_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BreakWord"
+        />
+
+    <Button
+        android:id="@+id/action_view_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ViewModel"
+        />
+
+    <Button
+        android:id="@+id/action_xcrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XCRASH"
+        />
+
+
+</LinearLayout>
