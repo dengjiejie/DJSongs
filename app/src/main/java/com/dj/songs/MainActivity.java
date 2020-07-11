@@ -8,10 +8,12 @@ import android.widget.Button;
 
 import com.dj.songs.binder.ui.MusicActivity;
 import com.dj.songs.breakword.ui.BreakWordActivity;
+import com.dj.songs.dialogfragment.DialogFragmentActivity;
 import com.dj.songs.image.ui.ImageMaganerActivity;
 import com.dj.songs.network.ui.NetWorkActivity;
 import com.dj.songs.rxjava.ui.RxjavaActivity;
 import com.dj.songs.viewmodel.ui.ViewModelActivity;
+import com.dj.songs.viewpager.ViewPagerActivity;
 import com.dj.songs.xcrash.ui.XCrash2Activity;
 import com.dj.songs.xcrash.ui.XCrashActivity;
 
@@ -31,6 +33,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button mViewModelService;
 
     private Button mXcrashService;
+
+    private Button mViewPagerService;
+
+    private Button mDialogFragmentService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +69,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mXcrashService = findViewById(R.id.action_xcrash);
         mXcrashService.setOnClickListener(this);
 
+        mViewPagerService = findViewById(R.id.action_viewpager);
+        mViewPagerService.setOnClickListener(this);
 
+        mDialogFragmentService = findViewById(R.id.action_dialog_gragment);
+        mDialogFragmentService.setOnClickListener(this);
 
     }
 
@@ -104,6 +115,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             }
 
+            case R.id.action_viewpager: {
+                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+                break;
+            }
+
+            case R.id.action_dialog_gragment: {
+                startActivity(new Intent(MainActivity.this, DialogFragmentActivity.class));
+                break;
+            }
 
 
         }

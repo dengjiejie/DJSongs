@@ -27,6 +27,13 @@
 
         <activity android:name=".xcrash.ui.SecondActivity" />
 
+        <activity android:name=".viewpager.ViewPagerActivity" />
+
+        <activity android:name=".dialogfragment.DialogFragmentActivity" />
+
+        <activity android:name=".dialogfragment.DialogActivity"
+            android:theme="@style/dialog_style"/>
+
         <service
             android:name=".xcrash.ui.MyService"
             android:enabled="true"

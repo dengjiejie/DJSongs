@@ -2,10 +2,6 @@ package com.dj.songs.network.net;
 
 import android.util.Log;
 
-import com.dj.songs.network.model.IpData;
-
-import java.io.IOException;
-
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -13,9 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @date：2020/4/8 4:15 PM
  */
 public class RetrofitOkhttp {
-
 
     public void request(Callback callback) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -67,9 +60,5 @@ public class RetrofitOkhttp {
                 });
 //
     }
-
-
-
-
 
 }
