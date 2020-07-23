@@ -5,16 +5,17 @@
     android:orientation="vertical"
     android:padding="5dp" >
 
-    <GridView
+    <Button
+        android:id="@+id/buttom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="click"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:horizontalSpacing="5dp"
-        android:verticalSpacing="5dp"
-        android:listSelector="@android:color/transparent"
-        android:numColumns="3"
-        android:stretchMode="columnWidth" >
-    </GridView>
+        android:gravity="center">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

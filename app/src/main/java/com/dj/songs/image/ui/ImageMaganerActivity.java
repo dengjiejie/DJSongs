@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dj.songs.R;
+import com.dj.songs.image.ImageData;
 import com.dj.songs.image.imageloader.Utils.MyUtils;
 import com.dj.songs.image.imageloader.loader.LoaderImage;
 
@@ -24,14 +25,19 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class ImageMaganerActivity extends Activity implements OnScrollListener {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class ImageMaganerActivity extends Activity {
     private static final String TAG = "MainActivity";
 
-    private List<String> mUrList = new ArrayList<String>();
+    private List<ImageData> mUrList = new ArrayList<>();
     LoaderImage mImageLoader;
-    private GridView mImageGridView;
-    private BaseAdapter mImageAdapter;
+    private RecyclerView mImageGridView;
+    private ImageAdapter mImageAdapter;
 
     private boolean mIsGridViewIdle = true;
     private int mImageWidth = 0;
@@ -87,7 +93,7 @@ public class ImageMaganerActivity extends Activity implements OnScrollListener {
                 "http://www.renyugang.cn/emlog/content/plugins/kl_album/upload/201004/852706aad6df6cd839f1211c358f2812201004120651068641.jpg"
         };
         for (String url : imageUrls) {
-            mUrList.add(url);
+            mUrList.add(new ImageData(url, url));
         }
         int screenWidth = MyUtils.getScreenMetrics(this).widthPixels;
         int space = (int)MyUtils.dp2px(this, 20f);
@@ -100,10 +106,20 @@ public class ImageMaganerActivity extends Activity implements OnScrollListener {
 
     private void initView() {
 
-        mImageGridView = (GridView) findViewById(R.id.gridView1);
+        findViewById(R.id.buttom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ImageAdapter)mImageAdapter).getItem (0).mText = "hahahaha";
+                mImageAdapter.notifyItemChanged(0, "dfdfdf");
+            }
+        });
+
+        mImageGridView = (RecyclerView) findViewById(R.id.gridView1);
+
+        mImageGridView.setLayoutManager(new GridLayoutManager(this, 3));
         mImageAdapter = new ImageAdapter(this);
         mImageGridView.setAdapter(mImageAdapter);
-        mImageGridView.setOnScrollListener(this);
+        mImageGridView.addOnScrollListener(onScrollListener);
 
         if (!mIsWifi) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -121,7 +137,7 @@ public class ImageMaganerActivity extends Activity implements OnScrollListener {
         }
     }
 
-    private class ImageAdapter extends BaseAdapter {
+    private class ImageAdapter extends RecyclerView.Adapter<ViewHolder> {
         private LayoutInflater mInflater;
         private Drawable mDefaultBitmapDrawable;
 
@@ -130,14 +146,36 @@ public class ImageMaganerActivity extends Activity implements OnScrollListener {
             mDefaultBitmapDrawable = context.getResources().getDrawable(R.drawable.image_default);
         }
 
+        public ImageData getItem(int position) {
+            return mUrList.get(position);
+        }
+
+        @NonNull
         @Override
-        public int getCount() {
-            return mUrList.size();
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new ViewHolder(mInflater.inflate(R.layout.image_list_item,parent, false));
         }
 
         @Override
-        public String getItem(int position) {
-            return mUrList.get(position);
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            ImageView imageView = holder.imageView;
+            ImageData imageData = getItem(position);
+            holder.text.setText(imageData.mText);
+
+            final String tag = (String)imageView.getTag();
+            final String uri = imageData.mUrl;
+
+            if(uri.equals((tag))) {
+                return;
+            }
+
+            if (!uri.equals(tag)) {
+                imageView.setImageDrawable(mDefaultBitmapDrawable);
+            }
+            if (mIsGridViewIdle && mCanGetBitmapFromNetWork) {
+                imageView.setTag(uri);
+                mImageLoader.bindBitmap(uri, imageView, mImageWidth, mImageWidth);
+            }
         }
 
         @Override
@@ -146,49 +184,41 @@ public class ImageMaganerActivity extends Activity implements OnScrollListener {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
-            if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.image_list_item,parent, false);
-                holder = new ViewHolder();
-                holder.imageView = (ImageView) convertView.findViewById(R.id.image);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-            ImageView imageView = holder.imageView;
-            final String tag = (String)imageView.getTag();
-            final String uri = getItem(position);
-            if (!uri.equals(tag)) {
-                imageView.setImageDrawable(mDefaultBitmapDrawable);
-            }
-            if (mIsGridViewIdle && mCanGetBitmapFromNetWork) {
-                imageView.setTag(uri);
-                mImageLoader.bindBitmap(uri, imageView, mImageWidth, mImageWidth);
-            }
-            return convertView;
+        public int getItemCount() {
+            return mUrList.size();
         }
-
     }
 
-    private static class ViewHolder {
+    private static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-    }
+        public TextView text;
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        if (scrollState == OnScrollListener.SCROLL_STATE_IDLE) {
-            mIsGridViewIdle = true;
-            mImageAdapter.notifyDataSetChanged();
-        } else {
-            mIsGridViewIdle = false;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = (ImageView) itemView.findViewById(R.id.image);
+
+            text = (TextView) itemView.findViewById(R.id.text);
         }
+
+
+
     }
 
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem,
-            int visibleItemCount, int totalItemCount) {
-        // ignored
-        
-    }
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener(){
+
+
+        @Override
+        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                mIsGridViewIdle = true;
+                mImageAdapter.notifyDataSetChanged();
+            } else {
+                mIsGridViewIdle = false;
+            }
+        }
+
+    };
+
+
 }

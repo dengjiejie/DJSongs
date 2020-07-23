@@ -6,4 +6,12 @@ package com.dj.songs.image;
  * description :
  */
 public class ImageData {
+    public String mUrl;
+
+    public String mText;
+
+    public ImageData(String url, String text) {
+        mUrl = url;
+        mText = text;
+    }
 }

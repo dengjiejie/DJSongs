@@ -1,22 +1,80 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="5dp" >
+    android:padding="5dp">
 
-    <Button
-        android:id="@+id/action_dialog"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show Dialog Fragment"
-        />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/action_dialog_activity"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/action_dialog_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Dialog Fragment" />
+
+            <Button
+                android:id="@+id/action_dialog_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Dialog Activity" />
+
+            <Button
+                android:id="@+id/action_normal_fragment_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Dialog Fragment" />
+        </LinearLayout>
+    </FrameLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show Dialog Activity"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@android:color/holo_red_dark" />-->
+
+        <FrameLayout
+            android:id="@+id/fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:clipChildren="false"
+                android:orientation="vertical">
+                        <View
+                            android:id="@+id/story_bottom_sheet_bg"
+                            android:layout_width="match_parent"
+                            android:layout_height="1000dp"
+
+                            android:alpha="0"
+                            android:background="#99000000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dddffdfdfdf" />
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    app:behavior_hideable="true"
+                    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -58,7 +58,7 @@ public class MyDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-        View layoutView = inflater.inflate(R.layout.dialog_fragment, container, false);
+        View layoutView = inflater.inflate(R.layout.dialog_activity, container, false);
 
         return layoutView;
 
