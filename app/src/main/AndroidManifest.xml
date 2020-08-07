@@ -16,30 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".rxjava.ui.RxjavaActivity"></activity>
-        <activity android:name=".network.ui.NetWorkActivity" />
-        <activity android:name=".breakword.ui.BreakWordActivity" />
-
-        <activity android:name=".viewmodel.ui.ViewModelActivity" />
-        <activity android:name=".xcrash.ui.XCrashActivity" />
-
-        <activity android:name=".xcrash.ui.XCrash2Activity" />
-
-        <activity android:name=".xcrash.ui.SecondActivity" />
-
-        <activity android:name=".viewpager.ViewPagerActivity" />
-
-        <activity android:name=".dialogfragment.DialogFragmentActivity" />
-
-        <activity android:name=".dialogfragment.DialogActivity"
-            android:theme="@style/dialog_style"/>
-
-        <service
-            android:name=".xcrash.ui.MyService"
-            android:enabled="true"
-            android:exported="false"
-            android:process=":bg" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +25,26 @@
         </activity>
         <activity android:name=".image.ui.ImageMaganerActivity" />
         <activity android:name=".binder.ui.MusicActivity" />
+        <activity android:name=".rxjava.ui.RxjavaActivity"></activity>
+        <activity android:name=".network.ui.NetWorkActivity" />
+        <activity android:name=".breakword.ui.BreakWordActivity" />
+        <activity android:name=".viewmodel.ui.ViewModelActivity" />
+        <activity android:name=".xcrash.ui.XCrashActivity" />
+        <activity android:name=".xcrash.ui.XCrash2Activity" />
+        <activity android:name=".xcrash.ui.SecondActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity" />
+        <activity android:name=".dialogfragment.DialogFragmentActivity" />
+        <activity android:name=".dialogfragment.DialogActivity"
+            android:theme="@style/dialog_style"/>
+        <activity android:name=".view.lifecircle.ViewCircleActivity"/>
+        <activity android:name=".recyclerview.RecyclerViewActivity"/>
+        <activity android:name=".canvas_paint.CanvasPaintActivity"/>
+
+        <service
+            android:name=".xcrash.ui.MyService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":bg" />
 
         <service
             android:name=".binder.musicplayservice.MusicService"

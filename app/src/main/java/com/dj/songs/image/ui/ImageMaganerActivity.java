@@ -5,44 +5,26 @@ import java.util.List;
 
 import com.dj.songs.R;
 import com.dj.songs.image.ImageData;
+import com.dj.songs.image.ImageGridAdapter;
 import com.dj.songs.image.imageloader.Utils.MyUtils;
-import com.dj.songs.image.imageloader.loader.LoaderImage;
-
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ImageMaganerActivity extends Activity {
-    private static final String TAG = "MainActivity";
 
     private List<ImageData> mUrList = new ArrayList<>();
-    LoaderImage mImageLoader;
-    private RecyclerView mImageGridView;
-    private ImageAdapter mImageAdapter;
 
-    private boolean mIsGridViewIdle = true;
-    private int mImageWidth = 0;
-    private boolean mIsWifi = false;
-    private boolean mCanGetBitmapFromNetWork = false;
+    private RecyclerView mImageGridView;
+    private ImageGridAdapter mImageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +32,6 @@ public class ImageMaganerActivity extends Activity {
         setContentView(R.layout.activity_image_manager);
         initData();
         initView();
-        mImageLoader = LoaderImage.Companion.build(ImageMaganerActivity.this);
     }
 
     private void initData() {
@@ -95,40 +76,41 @@ public class ImageMaganerActivity extends Activity {
         for (String url : imageUrls) {
             mUrList.add(new ImageData(url, url));
         }
-        int screenWidth = MyUtils.getScreenMetrics(this).widthPixels;
-        int space = (int)MyUtils.dp2px(this, 20f);
-        mImageWidth = (screenWidth - space) / 3;
-        mIsWifi = MyUtils.isWifi(this);
-        if (mIsWifi) {
-            mCanGetBitmapFromNetWork = true;
-        }
+
     }
+
 
     private void initView() {
 
         findViewById(R.id.buttom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ImageAdapter)mImageAdapter).getItem (0).mText = "hahahaha";
+                ((ImageGridAdapter) mImageAdapter).getItem(0).mText = "hahahaha";
                 mImageAdapter.notifyItemChanged(0, "dfdfdf");
             }
         });
 
-        mImageGridView = (RecyclerView) findViewById(R.id.gridView1);
+        findViewById(R.id.fresco_switch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ImageGridAdapter) mImageAdapter).setmUseFresco(true);
+            }
+        });
 
+
+        mImageGridView = (RecyclerView) findViewById(R.id.gridView1);
         mImageGridView.setLayoutManager(new GridLayoutManager(this, 3));
-        mImageAdapter = new ImageAdapter(this);
+        mImageAdapter = new ImageGridAdapter(this, mUrList);
         mImageGridView.setAdapter(mImageAdapter);
         mImageGridView.addOnScrollListener(onScrollListener);
-
-        if (!mIsWifi) {
+        if (!MyUtils.isWifi(this)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("初次使用会从网络下载大概5MB的图片，确认要下载吗？");
             builder.setTitle("注意");
             builder.setPositiveButton("是", new OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    mCanGetBitmapFromNetWork = true;
+                    mImageAdapter.setmCanGetBitmapFromNetWork(true);
                     mImageAdapter.notifyDataSetChanged();
                 }
             });
@@ -137,88 +119,18 @@ public class ImageMaganerActivity extends Activity {
         }
     }
 
-    private class ImageAdapter extends RecyclerView.Adapter<ViewHolder> {
-        private LayoutInflater mInflater;
-        private Drawable mDefaultBitmapDrawable;
 
-        private ImageAdapter(Context context) {
-            mInflater = LayoutInflater.from(context);
-            mDefaultBitmapDrawable = context.getResources().getDrawable(R.drawable.image_default);
-        }
-
-        public ImageData getItem(int position) {
-            return mUrList.get(position);
-        }
-
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ViewHolder(mInflater.inflate(R.layout.image_list_item,parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            ImageView imageView = holder.imageView;
-            ImageData imageData = getItem(position);
-            holder.text.setText(imageData.mText);
-
-            final String tag = (String)imageView.getTag();
-            final String uri = imageData.mUrl;
-
-            if(uri.equals((tag))) {
-                return;
-            }
-
-            if (!uri.equals(tag)) {
-                imageView.setImageDrawable(mDefaultBitmapDrawable);
-            }
-            if (mIsGridViewIdle && mCanGetBitmapFromNetWork) {
-                imageView.setTag(uri);
-                mImageLoader.bindBitmap(uri, imageView, mImageWidth, mImageWidth);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public int getItemCount() {
-            return mUrList.size();
-        }
-    }
-
-    private static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public TextView text;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.image);
-
-            text = (TextView) itemView.findViewById(R.id.text);
-        }
-
-
-
-    }
-
-    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener(){
-
-
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                mIsGridViewIdle = true;
                 mImageAdapter.notifyDataSetChanged();
+                mImageAdapter.setmIsGridViewIdle(true);
             } else {
-                mIsGridViewIdle = false;
+                mImageAdapter.setmIsGridViewIdle(false);
             }
         }
 
     };
-
-
 }

@@ -1,14 +1,10 @@
 package com.dj.songs.viewmodel.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.dj.songs.R
 import com.dj.songs.viewmodel.vm.UserModel

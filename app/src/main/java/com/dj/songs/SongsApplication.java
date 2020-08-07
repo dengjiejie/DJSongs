@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.json.JSONObject;
 
 import java.io.File;
@@ -16,6 +18,12 @@ import xcrash.ICrashCallback;
 
 public class SongsApplication extends Application {
     private final String TAG = "xcrash_sample";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+//        Fresco.initialize(this);
+    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -51,23 +59,23 @@ public class SongsApplication extends Application {
 
         // Initialize xCrash.
         XCrash.init(this, new XCrash.InitParameters()
-            .setAppVersion("1.2.3-beta456-patch789")
-            .setJavaRethrow(false)
-            .setJavaLogCountMax(10)
-            .setJavaDumpAllThreadsWhiteList(new String[]{"^main$", "^Binder:.*", ".*Finalizer.*"})
-            .setJavaDumpAllThreadsCountMax(10)
-            .setJavaCallback(callback)
-            .setNativeRethrow(false)
-            .setNativeLogCountMax(10)
-            .setNativeDumpAllThreadsWhiteList(new String[]{"^xcrash\\.sample$", "^Signal Catcher$", "^Jit thread pool$", ".*(R|r)ender.*", ".*Chrome.*"})
-            .setNativeDumpAllThreadsCountMax(10)
-            .setNativeCallback(callback)
-            .setAnrRethrow(true)
-            .setAnrLogCountMax(10)
-            .setAnrCallback(callback)
-            .setPlaceholderCountMax(3)
-            .setPlaceholderSizeKb(512)
-            .setLogFileMaintainDelayMs(1000));
+                .setAppVersion("1.2.3-beta456-patch789")
+                .setJavaRethrow(false)
+                .setJavaLogCountMax(10)
+                .setJavaDumpAllThreadsWhiteList(new String[]{"^main$", "^Binder:.*", ".*Finalizer.*"})
+                .setJavaDumpAllThreadsCountMax(10)
+                .setJavaCallback(callback)
+                .setNativeRethrow(false)
+                .setNativeLogCountMax(10)
+                .setNativeDumpAllThreadsWhiteList(new String[]{"^xcrash\\.sample$", "^Signal Catcher$", "^Jit thread pool$", ".*(R|r)ender.*", ".*Chrome.*"})
+                .setNativeDumpAllThreadsCountMax(10)
+                .setNativeCallback(callback)
+                .setAnrRethrow(true)
+                .setAnrLogCountMax(10)
+                .setAnrCallback(callback)
+                .setPlaceholderCountMax(3)
+                .setPlaceholderSizeKb(512)
+                .setLogFileMaintainDelayMs(1000));
 
         Log.d(TAG, "xCrash SDK init: end");
 
@@ -75,7 +83,7 @@ public class SongsApplication extends Application {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for(File file : TombstoneManager.getAllTombstones()) {
+                for (File file : TombstoneManager.getAllTombstones()) {
                     sendThenDeleteCrashLog(file.getAbsolutePath(), null);
                 }
             }

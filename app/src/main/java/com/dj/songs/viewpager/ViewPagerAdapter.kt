@@ -9,12 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
  *  date : 2020/7/9 5:35 PM
  *  description :
  */
-class ViewPagerAdapter: PagerAdapter() {
-    private var datas: List<View>? = null
-
-    fun ViewAdapter(list: List<View>?) {
-        datas = list
-    }
+class ViewPagerAdapter(private var datas: List<View>?): PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
@@ -23,7 +18,5 @@ class ViewPagerAdapter: PagerAdapter() {
     override fun getCount(): Int {
         return datas!!.size
     }
-
-
 
 }

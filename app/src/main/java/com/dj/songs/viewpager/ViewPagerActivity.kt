@@ -1,14 +1,10 @@
 package com.dj.songs.viewpager
 
-import android.R.drawable
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
-import android.widget.ImageView
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.dj.songs.R
-import java.lang.reflect.Field
 
 
 /**
@@ -16,50 +12,19 @@ import java.lang.reflect.Field
  *  date : 2020/7/9 5:32 PM
  *  description :
  */
-class ViewPagerActivity: FragmentActivity() {
+class ViewPagerActivity: AppCompatActivity() {
 
     var viewpager : ViewPager? = null
+    private var pages: List<String>? = null
+    var mViewPager2 : ViewPager2? = null
 
-    private var pages: List<View>? = null
-
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewpager)
-
-        pages = getPages()
         viewpager = findViewById(R.id.viewpager)
-
-        viewpager?.adapter = ViewPagerAdapter()
-
-
-
+        mViewPager2 = findViewById(R.id.view_pager2)
+        mViewPager2?.orientation = ViewPager2.ORIENTATION_VERTICAL
+        mViewPager2?.adapter =  ViewPager2Adapter(pages, this)
     }
-
-
-    private fun getPages(): List<View>? {
-        val pages: MutableList<View> = ArrayList()
-        val fields: Array<Field> = drawable::class.java.declaredFields
-        try {
-            for (field in fields) {
-                if (field.getName().startsWith("page")) {
-                    val view = ImageView(this)
-                    view.setImageResource(field.getInt(null))
-                    view.setScaleType(ImageView.ScaleType.CENTER_CROP)
-                    pages.add(view)
-                }
-            }
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
-        }
-        return pages
-    }
-
-
-
-
-
-
 
 }

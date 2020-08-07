@@ -1,0 +1,77 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/description_view_pager"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="RecyclerView 模仿 ViewPager"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/view_pager"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@id/description_blur"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_view_pager"
+        tools:listitem="@layout/recycler_item" />
+
+    <TextView
+        android:id="@+id/description_blur"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="RecyclerView 实现渐隐效果"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/blur_boundary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_pager" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/blur_boundary"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_blur"
+        tools:listitem="@layout/recycler_item" />
+
+    <com.dj.songs.recyclerview.BlurView
+        android:id="@+id/top_blur"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@android:color/transparent"
+        app:isTop="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/blur_boundary"
+        android:visibility="gone"/>
+
+    <com.dj.songs.recyclerview.BlurView
+        android:id="@+id/bottom_blur"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@android:color/transparent"
+        app:isTop="false"
+        app:layout_constraintBottom_toBottomOf="@+id/blur_boundary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

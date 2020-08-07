@@ -4,7 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp" >
-
+    <Button
+        android:id="@+id/fresco_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fresco 开关"/>
     <Button
         android:id="@+id/buttom"
         android:layout_width="match_parent"
