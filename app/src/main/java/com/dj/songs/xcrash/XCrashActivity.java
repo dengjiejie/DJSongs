@@ -1,4 +1,4 @@
-package com.dj.songs.xcrash.ui;
+package com.dj.songs.xcrash;
 
 import android.app.Activity;
 import android.os.Bundle;

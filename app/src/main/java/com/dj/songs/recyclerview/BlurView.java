@@ -58,6 +58,5 @@ public class BlurView extends LinearLayout {
         paint.setShader(linearGradient);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
-
     }
 }

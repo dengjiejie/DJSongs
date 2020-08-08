@@ -3,12 +3,12 @@ package com.dj.songs.recyclerview;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,54 +35,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
+
         mDAlphaAnimation = new AlphaAnimation(1, 0);
         mDAlphaAnimation.setDuration(300);
         mDAlphaAnimation.setFillAfter(true);
-        mDAlphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (mTopBlur.getVisibility() == View.VISIBLE) {
-                    mTopBlur.setVisibility(View.GONE);
-                }
-                if (mBottomBlur.getVisibility() == View.VISIBLE) {
-                    mBottomBlur.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
         mAAlphaAnimation = new AlphaAnimation(0, 1);
         mAAlphaAnimation.setDuration(300);
         mAAlphaAnimation.setFillAfter(true);
-        mAAlphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
 
     }
-
 
     @Override
     protected void onResume() {
@@ -101,6 +63,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         mRecyclerViewAdapter = new RecyclerViewAdapter(this);
         mBlurRecyclerView.setAdapter(mRecyclerViewAdapter);
         mBlurRecyclerView.addOnScrollListener(onScrollListener);
+        new LinearSnapHelper().attachToRecyclerView(mBlurRecyclerView);
     }
 
     RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {

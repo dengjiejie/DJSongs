@@ -20,7 +20,7 @@
 //
 
 // Created by caikelun on 2019-03-07.
-package com.dj.songs.xcrash.ui;
+package com.dj.songs.xcrash;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;

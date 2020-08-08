@@ -29,9 +29,9 @@
         <activity android:name=".network.ui.NetWorkActivity" />
         <activity android:name=".breakword.ui.BreakWordActivity" />
         <activity android:name=".viewmodel.ui.ViewModelActivity" />
-        <activity android:name=".xcrash.ui.XCrashActivity" />
-        <activity android:name=".xcrash.ui.XCrash2Activity" />
-        <activity android:name=".xcrash.ui.SecondActivity" />
+        <activity android:name=".xcrash.XCrashActivity" />
+        <activity android:name=".xcrash.XCrash2Activity" />
+        <activity android:name=".xcrash.SecondActivity" />
         <activity android:name=".viewpager.ViewPagerActivity" />
         <activity android:name=".dialogfragment.DialogFragmentActivity" />
         <activity android:name=".dialogfragment.DialogActivity"
@@ -41,7 +41,7 @@
         <activity android:name=".canvas_paint.CanvasPaintActivity"/>
 
         <service
-            android:name=".xcrash.ui.MyService"
+            android:name=".xcrash.MyService"
             android:enabled="true"
             android:exported="false"
             android:process=":bg" />

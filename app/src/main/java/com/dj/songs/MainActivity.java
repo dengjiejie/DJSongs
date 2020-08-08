@@ -17,9 +17,8 @@ import com.dj.songs.rxjava.ui.RxjavaActivity;
 import com.dj.songs.view.lifecircle.ViewCircleActivity;
 import com.dj.songs.viewmodel.ui.ViewModelActivity;
 import com.dj.songs.viewpager.ViewPagerActivity;
-import com.dj.songs.xcrash.ui.XCrash2Activity;
+import com.dj.songs.xcrash.XCrash2Activity;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
