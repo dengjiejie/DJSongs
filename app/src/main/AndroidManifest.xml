@@ -39,7 +39,9 @@
         <activity android:name=".view.lifecircle.ViewCircleActivity"/>
         <activity android:name=".recyclerview.RecyclerViewActivity"/>
         <activity android:name=".canvas_paint.CanvasPaintActivity"/>
+        <activity android:name=".media.MediaActivity"/>
 
+        <service android:name=".media.AudioService"/>
         <service
             android:name=".xcrash.MyService"
             android:enabled="true"

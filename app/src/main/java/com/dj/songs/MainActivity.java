@@ -2,6 +2,7 @@ package com.dj.songs;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,6 +12,7 @@ import com.dj.songs.breakword.ui.BreakWordActivity;
 import com.dj.songs.canvas_paint.CanvasPaintActivity;
 import com.dj.songs.dialogfragment.DialogFragmentActivity;
 import com.dj.songs.image.ui.ImageMaganerActivity;
+import com.dj.songs.media.MediaActivity;
 import com.dj.songs.network.ui.NetWorkActivity;
 import com.dj.songs.recyclerview.RecyclerViewActivity;
 import com.dj.songs.rxjava.ui.RxjavaActivity;
@@ -28,7 +30,7 @@ public class MainActivity extends Activity{
     private Map<String, Class> mButtonMap;
     private LinearLayout mLinearContainer;
 
-    private Class instance = RecyclerViewActivity.class;
+    private Class instance = MediaPlayer.class;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class MainActivity extends Activity{
         mButtonMap.put("Life_Circle_Service", ViewCircleActivity.class);
         mButtonMap.put("RecyclerView__Service", RecyclerViewActivity.class);
         mButtonMap.put("Canvas_Paint_Service", CanvasPaintActivity.class);
+        mButtonMap.put("Media_Service", MediaActivity.class);
     }
 
     @Override
