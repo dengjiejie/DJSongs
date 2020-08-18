@@ -1,84 +1,74 @@
 package com.dj.songs.media;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.view.View;
 import android.widget.Button;
-
-import androidx.annotation.Nullable;
+import android.widget.LinearLayout;
 
 import com.dj.songs.R;
+import com.dj.songs.binder.ui.MusicActivity;
+import com.dj.songs.breakword.ui.BreakWordActivity;
+import com.dj.songs.canvas_paint.CanvasPaintActivity;
+import com.dj.songs.dialogfragment.DialogFragmentActivity;
+import com.dj.songs.image.ui.ImageMaganerActivity;
+import com.dj.songs.media.audio.AudioActivity;
+import com.dj.songs.media.video.VideoActivity;
+import com.dj.songs.network.ui.NetWorkActivity;
+import com.dj.songs.recyclerview.RecyclerViewActivity;
+import com.dj.songs.rxjava.ui.RxjavaActivity;
+import com.dj.songs.view.lifecircle.ViewCircleActivity;
+import com.dj.songs.viewmodel.ui.ViewModelActivity;
+import com.dj.songs.viewpager.ViewPagerActivity;
+import com.dj.songs.xcrash.XCrash2Activity;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-/**
- * author : dengjiejie
- * date : 2020/8/8 6:15 PM
- * description :
- */
-public class MediaActivity extends Activity implements View.OnClickListener {
+public class MediaActivity extends Activity{
 
-    private Button mStop;
+    private Map<String, Class> mButtonMap;
+    private LinearLayout mLinearContainer;
 
-    private Button mStart;
-
-    private AudioService mAudioService;
-
-    ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            mAudioService = ((AudioService.AudioBinder)service).getService();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-
-        }
-    };
-
+    private Class instance = MediaPlayer.class;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media);
-        Intent intent = new Intent(MediaActivity.this, AudioService.class);
-        bindService(intent, serviceConnection, BIND_AUTO_CREATE);
+        setContentView(R.layout.activity_main);
+        mButtonMap = new LinkedHashMap<>();
+        initHashMap();
+    }
+
+    private void initHashMap() {
+        mButtonMap.put("Audio_Service", AudioActivity.class);
+        mButtonMap.put("Video_Service", VideoActivity.class);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mStart = findViewById(R.id.audio_start);
-        mStart.setOnClickListener(this);
-        mStop = findViewById(R.id.audio_stop);
-        mStop.setOnClickListener(this);
+        mLinearContainer = findViewById(R.id.linear_container);
+        initView();
     }
 
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.audio_start: {
-                if (mAudioService != null) {
-                    mAudioService.start();
-                }
-                break;
+    private void initView() {
+        mLinearContainer.removeAllViews();
+        for (String name : mButtonMap.keySet()) {
+            Button button = new Button(this);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            button.setLayoutParams(layoutParams);
+            button.setText(name);
+            if (mButtonMap.get(name).getSimpleName().equals(instance.getSimpleName())) {
+                startActivity(new Intent(MediaActivity.this, mButtonMap.get(name)));
             }
-            case R.id.audio_stop: {
-                if (mAudioService != null) {
-                    mAudioService.stop();
-                }
-                break;
-            }
+            button.setOnClickListener(v -> {
+                startActivity(new Intent(MediaActivity.this, mButtonMap.get(name)));
+            });
+            mLinearContainer.addView(button);
         }
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
 }

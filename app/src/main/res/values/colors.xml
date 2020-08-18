@@ -7,5 +7,7 @@
     <color name="reveal_color">#1b000000</color>
     <color name="light_green">#0ac39e</color>
     <color name="black">#000000</color>
+    <color name="ori">#FF5F14</color>
+
 
 </resources>

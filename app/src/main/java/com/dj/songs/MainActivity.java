@@ -16,6 +16,7 @@ import com.dj.songs.media.MediaActivity;
 import com.dj.songs.network.ui.NetWorkActivity;
 import com.dj.songs.recyclerview.RecyclerViewActivity;
 import com.dj.songs.rxjava.ui.RxjavaActivity;
+import com.dj.songs.spannable.SpannableStringActivity;
 import com.dj.songs.view.lifecircle.ViewCircleActivity;
 import com.dj.songs.viewmodel.ui.ViewModelActivity;
 import com.dj.songs.viewpager.ViewPagerActivity;
@@ -30,7 +31,7 @@ public class MainActivity extends Activity{
     private Map<String, Class> mButtonMap;
     private LinearLayout mLinearContainer;
 
-    private Class instance = MediaPlayer.class;
+    private Class instance = SpannableStringActivity.class;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class MainActivity extends Activity{
         mButtonMap.put("RecyclerView__Service", RecyclerViewActivity.class);
         mButtonMap.put("Canvas_Paint_Service", CanvasPaintActivity.class);
         mButtonMap.put("Media_Service", MediaActivity.class);
+        mButtonMap.put("Spannable_Service", SpannableStringActivity.class);
     }
 
     @Override

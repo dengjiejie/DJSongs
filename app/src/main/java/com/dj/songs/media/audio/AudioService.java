@@ -1,4 +1,4 @@
-package com.dj.songs.media;
+package com.dj.songs.media.audio;
 
 import android.app.Service;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class AudioService extends Service {
     public void onCreate() {
         super.onCreate();
         mMediaPlayer = MediaPlayer.create(this, R.raw.sound_music);
-        mMediaPlayer.setVolume(0.5f, 0.5f);
+        mMediaPlayer.setVolume(1f, 1f);
         mMediaPlayer.setLooping(true);
     }
 
@@ -38,9 +38,9 @@ public class AudioService extends Service {
 
     }
 
-    public void stop() {
+    public void paush() {
         if (mMediaPlayer.isPlaying()) {
-            mMediaPlayer.stop();
+            mMediaPlayer.pause();
         }
     }
 
