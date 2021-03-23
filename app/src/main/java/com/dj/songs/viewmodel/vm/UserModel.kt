@@ -14,7 +14,6 @@ class UserModel : ViewModel() {
 
     val mUserLiveData = MutableLiveData<String>()
 
-
      init {
         //模拟从网络加载用户信息
         mUserLiveData.postValue("ddddd")

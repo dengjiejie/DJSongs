@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.dj.songs.R;
 
 /**
@@ -24,5 +25,7 @@ public class CanvasPaintActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        LottieAnimationView lottieAnimationView = findViewById(R.id.la_aw);
+        lottieAnimationView.playAnimation();
     }
 }

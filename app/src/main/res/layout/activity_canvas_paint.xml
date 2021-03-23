@@ -1,12 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linear_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <com.dj.songs.canvas_paint.CanvasPaint
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"/>
+<!--    <com.dj.songs.canvas_paint.CanvasPaint-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/black"/>-->
 
-</LinearLayout>
+
+<!--    <com.dj.songs.canvas_paint.CanvasArcPaint-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:bgColor="@color/black"-->
+<!--        app:arcHeight="20dp"-->
+<!--        app:right="true"/>-->
+
+<!--    <com.dj.songs.canvas_paint.CanvasArcPaint-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="right"-->
+<!--        app:arcHeight="20dp"-->
+<!--        app:bgColor="@color/black"-->
+<!--        app:right="true" />-->
+<!--    <com.dj.songs.canvas_paint.DashView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/la_aw"
+        app:lottie_autoPlay="false"
+        app:lottie_imageAssetsFolder="images/"
+        app:lottie_fileName="aaaa.json"
+        app:lottie_loop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+
+
+
+
+
+</FrameLayout>

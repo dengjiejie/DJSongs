@@ -5,18 +5,23 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.dj.songs.R;
+import com.dj.songs.network.ui.NetWorkActivity;
 
 import static android.view.View.VISIBLE;
 
@@ -45,14 +50,17 @@ public class SpannableStringActivity extends Activity {
         mText = findViewById(R.id.spannable);
         mShow = findViewById(R.id.show);
 
-        String str="这是设";
-        int bstart=str.indexOf("背景");
-        int bend=bstart+"背景".length();
-        int fstart=str.indexOf("前景");
-        int fend=fstart+"前景".length();
+        String str="这是背景背景背景背";
         SpannableStringBuilder style= new SpannableStringBuilder(str);
         style.setSpan(new RoundBackGroundColorSpan(this), 0,2, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         mText.setText(style);
+
+        Paint paint = new Paint();
+        paint.setTextSize(dip2px(30));
+        float strWidth = paint.measureText(str);
+
+        Log.d("dengjiejie", "size = " + strWidth);
+
         mText.setOnClickListener(v -> mText.setText(++num));
         findViewById(R.id.start_ani).setOnClickListener(v -> {
             if(isUp) {
@@ -85,5 +93,13 @@ public class SpannableStringActivity extends Activity {
         animatorSet.play(slide).with(alpha);
         animatorSet.setDuration(500);
         animatorSet.start();
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public int dip2px(float dpValue) {
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }

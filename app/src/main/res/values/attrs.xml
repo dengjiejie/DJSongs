@@ -3,4 +3,11 @@
     <declare-styleable name="BlurView">
         <attr name="isTop" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="CanvasArcPaint">
+        <attr name="arcHeight" format="dimension"/>
+        <attr name="bgColor" format="color"/>
+        <attr name="right" format="boolean"/>
+    </declare-styleable>
+
 </resources>

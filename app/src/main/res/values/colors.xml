@@ -8,6 +8,8 @@
     <color name="light_green">#0ac39e</color>
     <color name="black">#000000</color>
     <color name="ori">#FF5F14</color>
-
+    <color name="FFFFFF">#FFFFFF</color>
+    <color name="F8F8F8">#F8F8F8</color>
+    <color name="F1F1F1">#F1F1F1</color>
 
 </resources>

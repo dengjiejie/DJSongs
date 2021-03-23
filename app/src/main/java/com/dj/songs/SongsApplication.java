@@ -19,6 +19,9 @@ import xcrash.ICrashCallback;
 public class SongsApplication extends Application {
     private final String TAG = "xcrash_sample";
 
+    public static Context mContext;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -28,7 +31,7 @@ public class SongsApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-
+        mContext = base;
         // callback for java crash, native crash and ANR
         ICrashCallback callback = new ICrashCallback() {
             @Override
