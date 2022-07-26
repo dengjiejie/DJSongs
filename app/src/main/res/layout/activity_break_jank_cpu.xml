@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+
+
+    <Button
+        android:id="@+id/jank_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="卡顿"
+        />
+
+
+
+
+
+    <Button
+        android:id="@+id/cpu_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cpu"
+        />
+
+
+
+    <TextView
+        android:id="@+id/context_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+</LinearLayout>

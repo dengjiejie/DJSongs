@@ -1,5 +1,6 @@
 package com.dj.songs.viewpager
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +28,10 @@ class ViewPagerActivity: AppCompatActivity() {
         mViewPager2?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewpager?.adapter =  ViewPagerAdapter(pages, this)
 
-        viewpager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+//        mViewPager2?.adapter = ViewPager2Adapter(this)
+
+
+        viewpager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
                 Log.d("dengjiejie", " state = " + state)
             }
@@ -38,7 +42,10 @@ class ViewPagerActivity: AppCompatActivity() {
                 positionOffsetPixels: Int
             ) {
 
-                Log.d("dengjiejie", " positionOffset = " + positionOffset + " positionOffsetPixels = " + positionOffsetPixels)
+                Log.d(
+                    "dengjiejie",
+                    " positionOffset = " + positionOffset + " positionOffsetPixels = " + positionOffsetPixels
+                )
 
             }
 
@@ -47,6 +54,20 @@ class ViewPagerActivity: AppCompatActivity() {
             }
 
         })
+
+        val mAnimator = ValueAnimator.ofFloat(0f, 2400f)
+            .setDuration(2400)
+
+        mAnimator.repeatCount = 1
+        mAnimator.addUpdateListener { animation: ValueAnimator ->
+            val progress = animation.animatedValue.toString().toFloat()
+            viewpager?.scrollTo(progress.toInt(), 0)
+
+        }
+
+        mAnimator.start()
+
+
     }
 
 }

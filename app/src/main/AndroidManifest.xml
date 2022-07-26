@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dj.songs">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".SongsApplication"
@@ -45,6 +47,7 @@
         <activity android:name=".spannable.SpannableStringActivity"/>
         <activity android:name=".activity_options_compat.FirstActivity"/>
         <activity android:name=".activity_options_compat.SecondActivity"/>
+        <activity android:name=".jank.JankAndCpuActivity"/>
 
         <service android:name=".media.audio.AudioService"/>
         <service

@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.dj.songs.R
 import com.dj.songs.viewmodel.vm.UserModel
@@ -27,10 +28,9 @@ class ViewModelActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_model)
-
         textView = findViewById(R.id.textView)
         button = findViewById(R.id.button)
-        viewModel = ViewModelProviders.of(this).get(UserModel::class.java)
+        viewModel = ViewModelProvider(this).get(UserModel::class.java)
         viewModel?.mUserLiveData?.observe(this,  Observer<String>(){
             textView?.text = it
         })

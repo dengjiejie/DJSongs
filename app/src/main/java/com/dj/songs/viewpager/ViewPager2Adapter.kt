@@ -15,7 +15,7 @@ import com.dj.songs.R
  *  date : 2020/8/3 6:09 PM
  *  description :
  */
-class ViewPager2Adapter(private var mList: List<String>? = null, private var mContext: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ViewPager2Adapter(private var mContext: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.view_pager_list_item, parent, false)

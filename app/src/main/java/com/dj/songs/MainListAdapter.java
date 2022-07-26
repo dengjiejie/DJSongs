@@ -60,10 +60,10 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.VH> {
         Pair<String, Class> buttonPair = ActivityItemConfig.mButtonPairs.get(position);
         holder.mButton.setText(buttonPair.first);
         if (buttonPair.second.getSimpleName().equals(ActivityItemConfig.instance.getSimpleName())) {
-            SongsApplication.mContext.startActivity(new Intent(mActivity, buttonPair.second));
+            mActivity.startActivity(new Intent(mActivity, buttonPair.second));
         } else {
             holder.mButton.setOnClickListener(View -> {
-                SongsApplication.mContext.startActivity(new Intent(mActivity, buttonPair.second));
+                mActivity.startActivity(new Intent(mActivity, buttonPair.second));
             });
         }
     }

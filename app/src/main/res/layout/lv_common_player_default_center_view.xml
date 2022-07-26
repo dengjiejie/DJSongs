@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--目前消费的统一体验player ui-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+    android:background="@color/reveal_color">
+<!--  -->
+<!--  <ViewStub-->
+<!--    android:id="@+id/lv_prev_next_panel_stub"-->
+<!--    android:layout_width="250dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:layout="@layout/lv_common_prev_next_view" />-->
+
+  <FrameLayout
+    android:id="@+id/lv_center_play_btn_wrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+
+    <!--    用于实现播放暂停切换动画-->
+<!--    <ImageView-->
+<!--      android:id="@+id/xf_center_play_btn_ghost"-->
+<!--      android:layout_width="@dimen/dimen_40dp"-->
+<!--      android:layout_height="@dimen/dimen_40dp"-->
+<!--      android:layout_centerVertical="true"-->
+<!--      android:layout_gravity="center"-->
+<!--      android:visibility="invisible"-->
+<!--      tools:visibility="visible" />-->
+
+  </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
