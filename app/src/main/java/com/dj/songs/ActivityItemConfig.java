@@ -8,7 +8,6 @@ import com.dj.songs.breakword.ui.BreakWordActivity;
 import com.dj.songs.canvas_paint.CanvasPaintActivity;
 import com.dj.songs.dialogfragment.DialogFragmentActivity;
 import com.dj.songs.image.ui.ImageMaganerActivity;
-import com.dj.songs.jank.JankAndCpuActivity;
 import com.dj.songs.media.MediaActivity;
 import com.dj.songs.network.ui.NetWorkActivity;
 import com.dj.songs.recyclerview.RecyclerViewActivity;
@@ -29,7 +28,7 @@ import java.util.List;
  */
 public class ActivityItemConfig {
 
-    public final static Class instance = JankAndCpuActivity.class;
+    public final static Class instance = Object.class;
 
     public final static List<Pair<String, Class>> mButtonPairs = new ArrayList<>();
     static  {
@@ -48,7 +47,6 @@ public class ActivityItemConfig {
         mButtonPairs.add(new Pair<>("Media_Service", MediaActivity.class));
         mButtonPairs.add(new Pair<>("Spannable_Service", SpannableStringActivity.class));
         mButtonPairs.add(new Pair<>("Avtivity_Ani_Service", FirstActivity.class));
-        mButtonPairs.add(new Pair<>("JankActivity", JankAndCpuActivity.class));
     }
 
 }

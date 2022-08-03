@@ -47,7 +47,6 @@
         <activity android:name=".spannable.SpannableStringActivity"/>
         <activity android:name=".activity_options_compat.FirstActivity"/>
         <activity android:name=".activity_options_compat.SecondActivity"/>
-        <activity android:name=".jank.JankAndCpuActivity"/>
 
         <service android:name=".media.audio.AudioService"/>
         <service
