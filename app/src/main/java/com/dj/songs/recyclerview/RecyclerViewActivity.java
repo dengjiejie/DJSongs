@@ -9,14 +9,12 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 
 /**
@@ -24,7 +22,7 @@ import com.dj.songs.R;
  * date : 2020/8/3 5:59 PM
  * description :
  */
-public class RecyclerViewActivity extends FragmentActivity {
+public class RecyclerViewActivity extends BaseActivity {
 
     private RecyclerView mBlurRecyclerView;
     private RecyclerView mViewPagerRecyclerView;

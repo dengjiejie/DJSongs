@@ -3,8 +3,8 @@ package com.dj.songs.canvas_paint
 import android.app.Activity
 import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
+import com.dj.songs.BaseActivity
 import com.dj.songs.R
 
 /**
@@ -12,7 +12,7 @@ import com.dj.songs.R
  * date : 2020/8/5 10:44 AM
  * description :
  */
-class CanvasPaintActivity : AppCompatActivity() {
+class CanvasPaintActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas_paint)

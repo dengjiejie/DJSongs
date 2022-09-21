@@ -3,9 +3,9 @@ package com.dj.songs.viewpager
 import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.dj.songs.BaseActivity
 import com.dj.songs.R
 
 
@@ -14,7 +14,7 @@ import com.dj.songs.R
  *  date : 2020/7/9 5:32 PM
  *  description :
  */
-class ViewPagerActivity: AppCompatActivity() {
+class ViewPagerActivity: BaseActivity() {
 
     var viewpager : ViewPager? = null
     private var pages: List<String>? = null

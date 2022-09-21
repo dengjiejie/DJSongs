@@ -11,15 +11,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 import com.dj.songs.breakword.breakiterator.BreakWord;
 
 import java.util.List;
 
 
-public class BreakWordActivity extends AppCompatActivity implements View.OnClickListener {
+public class BreakWordActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView textView;
 

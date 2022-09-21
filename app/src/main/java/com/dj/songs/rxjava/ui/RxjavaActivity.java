@@ -1,11 +1,9 @@
 package com.dj.songs.rxjava.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +21,7 @@ import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.ReplaySubject;
 
 
-public class RxjavaActivity extends AppCompatActivity {
+public class RxjavaActivity extends BaseActivity {
 
     ReplaySubject<Boolean> m = ReplaySubject.create();
     BehaviorSubject<Boolean> mB = BehaviorSubject.createDefault(true);

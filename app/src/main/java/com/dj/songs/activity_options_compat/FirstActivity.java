@@ -8,9 +8,8 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.FragmentActivity;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 
 /**
@@ -18,7 +17,7 @@ import com.dj.songs.R;
  * date : 2020/9/24 3:30 PM
  * description :
  */
-public class FirstActivity extends FragmentActivity {
+public class FirstActivity extends BaseActivity {
 
     private ImageView imageView;
     @Override

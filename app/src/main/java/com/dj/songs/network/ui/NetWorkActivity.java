@@ -1,8 +1,5 @@
 package com.dj.songs.network.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 import com.dj.songs.network.model.IPModel;
 import com.dj.songs.network.net.IPService;
 import com.dj.songs.network.net.OkHttpNetWork;
 import com.dj.songs.network.net.RetrofitOkhttp;
-
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -24,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class NetWorkActivity extends AppCompatActivity implements View.OnClickListener {
+public class NetWorkActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView textView;
 

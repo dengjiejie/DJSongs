@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.dj.songs">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -27,7 +26,7 @@
         </activity>
         <activity android:name=".image.ui.ImageMaganerActivity" />
         <activity android:name=".binder.ui.MusicActivity" />
-        <activity android:name=".rxjava.ui.RxjavaActivity"></activity>
+        <activity android:name=".rxjava.ui.RxjavaActivity" />
         <activity android:name=".network.ui.NetWorkActivity" />
         <activity android:name=".breakword.ui.BreakWordActivity" />
         <activity android:name=".viewmodel.ui.ViewModelActivity" />
@@ -47,6 +46,7 @@
         <activity android:name=".spannable.SpannableStringActivity"/>
         <activity android:name=".activity_options_compat.FirstActivity"/>
         <activity android:name=".activity_options_compat.SecondActivity"/>
+        <activity android:name=".aop.AopActivity"/>
 
         <service android:name=".media.audio.AudioService"/>
         <service

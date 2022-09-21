@@ -1,7 +1,6 @@
 package com.dj.songs;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
 import android.util.Pair;
@@ -12,25 +11,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.dj.songs.activity_options_compat.FirstActivity;
-import com.dj.songs.binder.ui.MusicActivity;
-import com.dj.songs.breakword.ui.BreakWordActivity;
-import com.dj.songs.canvas_paint.CanvasPaintActivity;
-import com.dj.songs.dialogfragment.DialogFragmentActivity;
-import com.dj.songs.image.ui.ImageMaganerActivity;
-import com.dj.songs.media.MediaActivity;
-import com.dj.songs.network.ui.NetWorkActivity;
-import com.dj.songs.recyclerview.RecyclerViewActivity;
-import com.dj.songs.rxjava.ui.RxjavaActivity;
-import com.dj.songs.spannable.SpannableStringActivity;
-import com.dj.songs.view.lifecircle.ViewCircleActivity;
-import com.dj.songs.viewmodel.ui.ViewModelActivity;
-import com.dj.songs.viewpager.ViewPagerActivity;
-import com.dj.songs.xcrash.XCrash2Activity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author : dengjiejie
@@ -62,9 +42,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.VH> {
         if (buttonPair.second.getSimpleName().equals(ActivityItemConfig.instance.getSimpleName())) {
             mActivity.startActivity(new Intent(mActivity, buttonPair.second));
         } else {
-            holder.mButton.setOnClickListener(View -> {
-                mActivity.startActivity(new Intent(mActivity, buttonPair.second));
-            });
+            holder.mButton.setOnClickListener(v -> mActivity.startActivity(new Intent(mActivity, buttonPair.second)));
         }
     }
 

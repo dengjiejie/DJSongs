@@ -7,9 +7,8 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 
 /**
@@ -17,7 +16,7 @@ import com.dj.songs.R;
  * date : 2020/7/27 8:28 PM
  * description :
  */
-public class ViewCircleActivity extends FragmentActivity {
+public class ViewCircleActivity extends BaseActivity {
 
     private TextView mTextView;
 

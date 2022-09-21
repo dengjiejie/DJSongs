@@ -1,14 +1,5 @@
 package com.dj.songs.image.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.dj.songs.R;
-import com.dj.songs.image.ImageData;
-import com.dj.songs.image.ImageGridAdapter;
-import com.dj.songs.image.imageloader.Utils.MyUtils;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -19,7 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ImageMaganerActivity extends Activity {
+import com.dj.songs.BaseActivity;
+import com.dj.songs.R;
+import com.dj.songs.image.ImageData;
+import com.dj.songs.image.ImageGridAdapter;
+import com.dj.songs.image.imageloader.Utils.MyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ImageMaganerActivity extends BaseActivity {
 
     private List<ImageData> mUrList = new ArrayList<>();
 

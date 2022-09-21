@@ -23,16 +23,16 @@
 package com.dj.songs.xcrash;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.dj.songs.BaseActivity;
 import com.dj.songs.R;
 
 import xcrash.XCrash;
 
-public class XCrash2Activity extends AppCompatActivity {
+public class XCrash2Activity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

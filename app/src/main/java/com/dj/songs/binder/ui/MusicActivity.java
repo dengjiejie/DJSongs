@@ -1,7 +1,6 @@
 package com.dj.songs.binder.ui;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -19,19 +18,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.dj.songs.BaseActivity;
+import com.dj.songs.R;
 import com.dj.songs.binder.musicplayservice.IBinderPool;
 import com.dj.songs.binder.musicplayservice.IMusicPlay;
 import com.dj.songs.binder.musicplayservice.IMusicPlayCallBack;
 import com.dj.songs.binder.musicplayservice.IVideoPlay;
 import com.dj.songs.binder.musicplayservice.MusicService;
-import com.dj.songs.R;
 
 /**
  * @author dengjie09
  * @description:
  * @date：2020/4/6 5:59 PM
  */
-public class MusicActivity extends Activity implements View.OnClickListener {
+public class MusicActivity extends BaseActivity implements View.OnClickListener {
 
     private IMusicPlay iMusicPlay;
     private IVideoPlay iVideoPlay;

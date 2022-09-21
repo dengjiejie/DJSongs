@@ -3,10 +3,9 @@ package com.dj.songs.viewmodel.ui
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import com.dj.songs.BaseActivity
 import com.dj.songs.R
 import com.dj.songs.viewmodel.vm.UserModel
 
@@ -17,7 +16,7 @@ import com.dj.songs.viewmodel.vm.UserModel
  * @date：2020/4/15 8:48 PM
  *
  */
-class ViewModelActivity : FragmentActivity() {
+class ViewModelActivity : BaseActivity() {
 
 
     var button : Button? = null
