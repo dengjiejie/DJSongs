@@ -1,42 +1,34 @@
 package com.dj.songs;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * author : dengjiejie
- * date : 2021/1/10 5:56 PM
+ * date : 2023/2/28 20:13
  * description :
  */
 public class Main {
 
 
-//
-//    public static void main(String[] args) {
-//        BehaviorSubject<Integer> m = BehaviorSubject.create();
-//        m.onNext(1);
-//
-//        m.subscribe(new Consumer<Integer>() {
-//            @Override
-//            public void accept(Integer integer) throws Exception {
-//                System.out.println("  " + integer);
-//            }
-//        });
-//
-//
-//        m.onNext(2);
-//
-//        m.onNext(3);
-//
-//        m.onNext(4);
-//
-//        m.onNext(5);
-//
-//
-//    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static void main(String[] args) {
 
+        PriorityQueue heap = new PriorityQueue<Integer>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 >= o2 ? 0 : 1;
+            }
+        });
 
-
-
-
-
+     heap.add(1);
+     heap.add(2);
+     System.out.print(heap.poll());
+    }
 
 
 }
